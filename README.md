@@ -17,3 +17,6 @@ terraform init
 terraform plan
 terraform apply
 ```
+
+After you run 'terraform apply' all the resources will be created, and the resource IDs will be shown on screen. You need to configure the front-end project using these resource IDs, [production config file](https://github.com/andrewlau4/aws-angular-integrate-demo/blob/main/src/environments/environment.ts), and [development config file](https://github.com/andrewlau4/aws-angular-integrate-demo/blob/main/src/environments/environment.development.ts)
+
