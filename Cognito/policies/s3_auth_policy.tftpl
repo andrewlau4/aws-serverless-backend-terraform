@@ -1,0 +1,70 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Action": [
+          "s3:GetObject",
+          "s3:PutObject",
+          "s3:DeleteObject"
+        ],
+        "Resource": [
+          "${bucket_arn}/public/*",
+          "${bucket_arn}/protected/$${cognito-identity.amazonaws.com:sub}/*",
+          "${bucket_arn}/private/$${cognito-identity.amazonaws.com:sub}/*"
+        ],
+        "Effect": "Allow"
+      },
+      {
+        "Action": [
+          "s3:PutObject"
+        ],
+        "Resource": [
+          "${bucket_arn}/uploads/*"
+        ],
+        "Effect": "Allow"
+      },
+      {
+        "Action": [
+          "s3:GetObject"
+        ],
+        "Resource": [
+          "${bucket_arn}/protected/*"
+        ],
+        "Effect": "Allow"
+      },
+      {
+        "Condition": {
+          "StringLike": {
+            "s3:prefix": [
+              "public/",
+              "public/*",
+              "protected/",
+              "protected/*",
+              "private/$${cognito-identity.amazonaws.com:sub}/",
+              "private/$${cognito-identity.amazonaws.com:sub}/*"
+            ]
+          }
+        },
+        "Action": [
+          "s3:ListBucket"
+        ],
+        "Resource": [
+          "${bucket_arn}"
+        ],
+        "Effect": "Allow"
+      },
+
+
+      {
+        "Effect": "Allow",
+    
+        "Action": [
+          "mobileanalytics:PutEvents",
+          "cognito-sync:*",
+          "cognito-identity:*"
+        ],
+    
+        "Resource": ["*"]
+      }
+    ]
+  }
