@@ -8,6 +8,6 @@ Run these commands to setup the AWS Infrastructure.
 
 ```
 terraform init
-
+terraform plan
 terraform apply
 ```

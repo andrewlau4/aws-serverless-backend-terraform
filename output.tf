@@ -2,7 +2,7 @@ output "user_pool_id" {
   value = module.create_cognito_infrastructure.user_pool_id
 }
 
-output "user_pool_client_id" {
+output "user_pool_web_client_id" {
   value = module.create_cognito_infrastructure.user_pool_client_id
 }
 
@@ -11,7 +11,7 @@ output "identity_pool_id" {
 }
 
 
-output "user_pool_region" {
+output "identity_pool_region" {
    value = module.create_cognito_infrastructure.client_pool_region  
 }
 
@@ -20,5 +20,5 @@ output "s3_bucket_name" {
 }
 
 output "current_aws_region" {
-    value = data.aws_region.current_region
+    value = data.aws_region.current_region.name
 }
